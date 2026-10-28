@@ -1,383 +1,120 @@
-/* Fonts are loaded directly from the three ORIGINAL uploaded filenames.
-   Place the three supplied original fonts in assets/fonts/ (no conversion needed).
-   Gurmukhi MN lacks Han characters, so Chinese characters use CJK fallbacks. */
-@font-face {
-  font-family: 'Inverserif';
-  src: url('../fonts/Inverserif.otf') format('opentype');
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Geologica';
-  src: url('../fonts/Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf') format('truetype');
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Gurmukhi MN';
-  src: local('Gurmukhi MN Bold'),
-       url('../fonts/Gurmukhi MN.ttc') format('collection');
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-}
-
-/* Shared styles for index.html, rsvp.html, and thank-you.html */
-/* Gurmukhi MN Bold does not contain Han glyphs. The following fonts are used
-   automatically for Chinese characters while retaining the requested family first. */
-:root {
-  color-scheme: light;
-  --navy: #162947;
-  --red: #871c25;
-  --cream: #fbd8af;
-  --body-font: 'Geologica', Arial, sans-serif;
-  --title-font: 'Inverserif', Georgia, serif;
-  --chinese-font: 'Gurmukhi MN', 'Noto Serif CJK SC', 'Songti SC', 'SimSun', serif;
-}
+/* Shanghai microsite: decorative compositions provided as individual PNGs.
+   Reference layouts: assets/preview/screen & assets/preview/phone.
+   No WebP images are used. */
+@font-face { font-family: Inverserif; src: url('../fonts/Inverserif.otf') format('opentype'); font-weight: 400; font-display: swap; }
+@font-face { font-family: Geologica; src: url('../fonts/Geologica-VariableFont_CRSV,SHRP,slnt,wght.ttf') format('truetype'); font-weight: 100 900; font-display: swap; }
+:root { color-scheme: light; --navy:#162947; --red:#861924; --cream:#ffe0b6; --title:Inverserif,Georgia,serif; --body:Geologica,Arial,sans-serif; }
 *, *::before, *::after { box-sizing: border-box; }
-html, body { margin: 0; background: var(--navy); }
-body { color: var(--navy); font-family: var(--body-font); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-
-.event-poster, .rsvp-poster {
-  position: relative;
-  isolation: isolate;
-  width: 100%;
-  min-height: 100svh;
-  aspect-ratio: 1920 / 1080;
-  overflow: hidden;
-  container-type: inline-size;
-  background: var(--navy) url('../artwork-desktop.webp') center / 100% 100% no-repeat;
+html,body { margin:0; padding:0; background:var(--navy); }
+body { font-family:var(--body); color:var(--navy); -webkit-font-smoothing:antialiased; }
+.poster { position:relative; isolation:isolate; container-type:inline-size; overflow:hidden; width:100%; aspect-ratio:1920/1080; margin:auto; background-position:center; background-size:100% 100%; background-repeat:no-repeat; }
+.poster-index { background-image:url('../img/screen/page-1/bg-page1.png'); }
+.poster-detail { background-image:url('../img/screen/page-2/bg-page2.png'); }
+.poster-rsvp { background-image:url('../img/screen/page-3/bg-page3.png'); }
+.poster-thanks { background-image:url('../img/screen/page-4/bg-page4.png'); }
+.art { display:block; position:absolute; z-index:1; pointer-events:none; }
+.art img { display:block; width:100%; height:auto; }
+.phone-only { display:none; }
+/* Page 1 / invitation */
+.index-avatar { top:6.48%; left:28.83%; width:33.01%; }
+.index-bird { top:7.55%; left:62.01%; width:15.55%; }
+.index-flag-left { top:27.13%; left:18.05%; width:5.24%; }
+.index-flag-right { top:27.13%; left:76.85%; width:5.24%; }
+.event-details { position:absolute; top:55.65%; left:50%; transform:translateX(-50%); width:75%; text-align:center; z-index:2; }
+.event-title { margin:0; font:400 3.78cqw/1.065 var(--title); letter-spacing:.004em; }
+.event-title span,.event-when span { display:block; white-space:nowrap; }
+.event-when { margin:.14em 0 0; font:600 1.73cqw/1.17 var(--body); letter-spacing:-.012em; }
+.art-button { z-index:3; position:absolute; display:flex; justify-content:center; align-items:center; border:0; padding:0; background-color:transparent; background-position:center; background-size:100% 100%; background-repeat:no-repeat; color:var(--cream); text-align:center; text-decoration:none; cursor:pointer; }
+.art-button:hover { filter:brightness(1.13); }
+.art-button:focus-visible { outline:3px solid var(--navy); outline-offset:5px; }
+.index-button { top:81.39%; left:40.45%; width:19.18%; aspect-ratio:491/159; background-image:url('../img/screen/page-1/btn.png'); font:400 1.92cqw/1.05 var(--title); letter-spacing:.04em; }
+/* Page 2 / guest and dress code */
+.detail-guest { top:0%; left:10.05%; width:31.57%; }
+.detail-group { top:23.26%; left:56.32%; width:29.88%; }
+.detail-rose { top:16.38%; left:40.83%; width:5.94%; }
+.detail-line { top:9.91%; left:48.69%; width:2.46%; }
+.detail-label { display:flex; align-items:center; justify-content:center; position:absolute; z-index:2; color:white; font:400 2.57cqw/1 var(--title); text-align:center; white-space:nowrap; background-size:100% 100%; background-repeat:no-repeat; }
+.main-guest-label { left:8.96%; top:51.67%; width:17.73%; height:7.23%; background-image:url('../img/screen/page-2/btn-3.png'); }
+.main-guest-name { position:absolute; z-index:2; left:15.65%; top:56.8%; margin:0; width:30%; color:var(--navy); text-align:center; font:750 11.85cqw/.98 var(--body); letter-spacing:-.04em; }
+.steal-label { left:59.46%; top:16.11%; width:22.85%; height:7.92%; background-image:url('../img/screen/page-2/btn-2.png'); }
+.next-button { left:40.45%; top:82.22%; width:19.18%; aspect-ratio:491/113; background-image:url('../img/screen/page-2/btn-1.png'); font:400 2.5cqw/1 var(--title); letter-spacing:.05em; }
+/* Page 3 / RSVP */
+.rsvp-avatar { top:7.10%; left:6.42%; width:35.78%; }
+.rsvp-flag-left { top:39.45%; left:4.6%; width:3.98%; }
+.rsvp-flag-right { top:39.45%; left:42.96%; width:3.98%; }
+.rsvp-event-name { position:absolute; z-index:2; top:72.55%; left:26%; width:39.8%; transform:translateX(-50%); text-align:center; font:400 3.72cqw/1.08 var(--title); }
+.rsvp-event-name span { display:block; white-space:nowrap; }
+.rsvp-heading { position:absolute; z-index:2; top:5.48%; left:73.95%; width:35%; transform:translateX(-50%); margin:0; color:var(--red); text-align:center; font:650 6.38cqw/1.1 var(--body); }
+.rsvp-form { position:absolute; inset:0; margin:0; z-index:3; }
+.rsvp-field { position:absolute; left:57.3%; width:33.07%; height:7%; }
+.field-name { top:20.65%; }
+.field-company { top:32.56%; }
+.field-whatsapp { top:44.48%; }
+.rsvp-field label { display:block; color:#0b0b0b; font:650 1.48cqw/1.15 var(--body); letter-spacing:.05em; white-space:nowrap; }
+.rsvp-field input { display:block; position:absolute; bottom:0; width:100%; height:52%; padding:0 .25em .1em 0; border:0; border-bottom:1px solid #8c8d85; border-radius:0; background:transparent; color:var(--navy); font:400 max(12px,1.18cqw)/1.2 var(--body); outline-offset:3px; }
+.rsvp-field input:focus-visible { outline:2px solid var(--red); }
+.rsvp-check { position:absolute; left:57.6%; width:35%; display:flex; align-items:center; gap:1cqw; color:#080808; cursor:pointer; font:400 1.13cqw/1.28 var(--body); }
+.check-attendance { top:56.1%; min-height:4.4%; font-weight:600; }
+.check-consent { top:64%; min-height:10%; }
+.rsvp-check input { appearance:none; -webkit-appearance:none; flex:0 0 1.9cqw; width:1.9cqw; height:1.9cqw; min-width:15px; min-height:15px; margin:0; border:1px solid #8291a5; border-radius:.38cqw; background:#fff; cursor:pointer; }
+.rsvp-check input:checked { background:var(--red); border-color:var(--red); }
+.rsvp-check input:checked::after { content:''; display:block; width:31%; height:52%; margin:17% auto; border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg); }
+.rsvp-check input:focus-visible { outline:2px solid var(--navy); outline-offset:3px; }
+.nontransferable { position:absolute; top:79.25%; left:56.4%; width:35%; margin:0; text-align:center; white-space:nowrap; font:650 1.3cqw/1.35 var(--body); letter-spacing:.03em; color:#0b0b0b; }
+.rsvp-submit { top:85.70%; left:65.02%; width:17.7%; aspect-ratio:453/104; background-image:url('../img/screen/page-3/btn.png'); font:400 2.2cqw/1 var(--title); letter-spacing:.05em; }
+.rsvp-submit:disabled { opacity:.65; cursor:progress; }
+.form-feedback { position:absolute; z-index:5; top:93%; left:56%; width:36%; margin:0; padding:8px 10px; background:var(--red); border-radius:4px; color:#fff; text-align:center; font:600 clamp(12px,1.1cqw,18px)/1.3 var(--body); }
+.form-feedback[hidden] { display:none; }
+/* Page 4 / thank you: QR removed because it is not present in the updated mockups. */
+.thank-message { position:absolute; left:50%; top:34.8%; transform:translateX(-50%); width:72%; text-align:center; color:#000; }
+.thank-message h1 { margin:0; font:400 5.35cqw/1.06 var(--title); }
+.thank-message p { margin:.18em 0 0; font:650 2.04cqw/1.13 var(--body); }
+.thank-message p span,.thank-event-name span { display:block; white-space:nowrap; }
+.thank-event-name { position:absolute; left:50%; top:79.05%; transform:translateX(-50%); width:70%; text-align:center; font:400 3.75cqw/1.08 var(--title); }
+@media (max-width:900px), (orientation:portrait) {
+  .poster { aspect-ratio:1179/2556; }
+  .poster-index { background-image:url('../img/phone/page-1/bg-page1.png'); }
+  .poster-detail { background-image:url('../img/phone/page-2/bg-page2.png'); }
+  .poster-rsvp { background-image:url('../img/phone/page-3/bg-page3.png'); }
+  .poster-thanks { background-image:url('../img/phone/page-4/bg-page4.png'); }
+  .screen-only { display:none; }
+  .phone-only { display:block; }
+  .index-avatar { left:6.11%; top:15.47%; width:76.08%; }
+  .index-bird { left:6.7%; top:41.31%; width:34.03%; }
+  .index-flag-left { left:8.3%; top:28.29%; width:8.52%; }
+  .index-flag-right { left:83.5%; top:28.29%; width:8.52%; }
+  .event-details { top:53.35%; width:94%; }
+  .event-title { font-size:8.28cqw; line-height:1.09; }
+  .event-when { margin-top:.15em; font-size:3.82cqw; line-height:1.19; }
+  .index-button { left:26.24%; top:71.15%; width:47.58%; aspect-ratio:748/243; background-image:url('../img/phone/page-1/btn.png'); font-size:4.7cqw; letter-spacing:.03em; }
+  .detail-guest { left:18.74%; top:5.09%; width:60.62%; }
+  .detail-group { left:10.08%; top:46.59%; width:79.96%; }
+  .detail-bird { left:69.41%; top:27.75%; width:14.19%; }
+  .detail-phone-line { position:absolute; z-index:2; left:19.13%; top:45.78%; width:61.70%; aspect-ratio:970/63; background:url('../img/phone/page-2/btn-4.png') center / 100% 100% no-repeat; }
+  .main-guest-label { left:16.65%; top:31.25%; width:34.11%; height:3.61%; background-image:url('../img/phone/page-2/btn-2.png'); font-size:4.7cqw; }
+  .main-guest-name { top:34.55%; left:26%; width:59%; font-size:22cqw; letter-spacing:-.055em; line-height:1; }
+  .steal-label { left:29.98%; top:62.79%; width:39.98%; height:3.64%; background-image:url('../img/phone/page-2/btn-3.png'); font-size:5.25cqw; }
+  .next-button { left:26.24%; top:72.15%; width:47.58%; aspect-ratio:748/172; background-image:url('../img/phone/page-2/btn-1.png'); font-size:6.15cqw; }
+  .rsvp-logo { left:32.15%; top:13.56%; width:35.69%; }
+  .rsvp-event-name { top:23.4%; left:50%; width:88%; font-size:7.3cqw; line-height:1.1; }
+  .rsvp-heading { top:32.6%; left:50%; width:85%; font-size:14.65cqw; }
+  .rsvp-field { left:15.15%; width:69.75%; height:4.2%; }
+  .field-name { top:40.6%; }
+  .field-company { top:47.1%; }
+  .field-whatsapp { top:53.62%; }
+  .rsvp-field label { font-size:3.4cqw; line-height:1.2; letter-spacing:.04em; }
+  .rsvp-field input { height:46%; font-size:max(16px,2.65cqw); }
+  .rsvp-check { left:15.85%; width:72%; gap:2.3cqw; font-size:2.5cqw; line-height:1.3; }
+  .check-attendance { top:60.2%; min-height:2.4%; }
+  .check-consent { top:64%; min-height:6%; }
+  .rsvp-check input { flex-basis:3.82cqw; width:3.82cqw; height:3.82cqw; border-radius:.7cqw; }
+  .nontransferable { top:72.9%; left:13%; width:74%; font-size:2.9cqw; letter-spacing:.015em; }
+  .rsvp-submit { left:31.37%; top:76.24%; width:37.28%; aspect-ratio:586/135; background-image:url('../img/phone/page-3/btn.png'); font-size:4.75cqw; }
+  .form-feedback { top:82.2%; left:14%; width:72%; font-size:clamp(12px,2cqw,19px); }
+  .thanks-logo { left:32.15%; top:13.56%; width:35.69%; }
+  .thank-message { top:37.85%; width:94%; }
+  .thank-message h1 { font-size:9.2cqw; }
+  .thank-message p { margin-top:.36em; font-size:4.2cqw; line-height:1.15; }
+  .thank-event-name { top:68.65%; width:90%; font-size:7.35cqw; line-height:1.08; }
 }
-.event-details { position: absolute; left: 50%; top: 56.43%; width: 73%; transform: translateX(-50%); text-align: center; }
-.event-title { margin: 0; font-family: var(--title-font); font-weight: 400; font-size: 3.78cqw; line-height: 1.07; letter-spacing: .004em; }
-.event-title span, .event-when span { display: block; }
-.event-when { margin: .12em 0 0; font-family: var(--body-font); font-weight: 600; font-size: 1.73cqw; line-height: 1.19; letter-spacing: -.012em; }
-
-/* Actual Chinese HTML text, never an SVG or part of the background image. */
-.ornament-message {
-  position: absolute;
-  z-index: 1;
-  top: 33.95%;
-  height: 27.2%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  writing-mode: vertical-rl;
-  text-orientation: upright;
-  white-space: nowrap;
-  font: 700 2.05cqw/1 var(--chinese-font);
-  letter-spacing: .1em;
-  color: #ffe0ac;
-  transform: translateX(-50%);
-}
-.ornament-left { left: 20.62%; }
-.ornament-right { left: 79.35%; }
-
-.rsvp-button {
-  position: absolute;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 82.15%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 19.3%;
-  height: 8.15%;
-  border-radius: 5px;
-  color: var(--cream);
-  font: 600 2.35cqw/1 var(--body-font);
-  letter-spacing: .055em;
-  text-decoration: none;
-  white-space: nowrap;
-  cursor: pointer;
-  transition: color .18s ease;
-}
-.rsvp-button:hover { color: white; }
-.rsvp-button:focus-visible { outline: 3px solid white; outline-offset: 5px; }
-.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
-@media (max-width: 900px), (orientation: portrait) {
-  .event-poster, .rsvp-poster { aspect-ratio: 944 / 2048; }
-  .event-poster { background-image: url('../artwork-mobile.webp'); }
-  .event-details { top: 53.36%; width: 90%; }
-  .event-title { font-size: 8.28cqw; line-height: 1.09; letter-spacing: .009em; }
-  .event-when { margin-top: .15em; font-size: 3.82cqw; line-height: 1.19; letter-spacing: -.012em; }
-  .ornament-message { top: 31.1%; height: 11.7%; font-size: 4.2cqw; letter-spacing: .1em; }
-  .ornament-left { left: 12.55%; }
-  .ornament-right { left: 87.45%; }
-  .rsvp-button { top: 72.1%; width: 48.3%; height: 5.45%; font-size: 5.65cqw; letter-spacing: .045em; }
-}
-@media (prefers-reduced-motion: reduce) { .rsvp-button { transition: none; } }
-
-
-/* RSVP page */
-/* All prose, headings, Chinese ornaments, labels and buttons are live HTML text.
-   Background WebP files only contain decorations and the Kredivo brand mark. */
-.rsvp-poster { background-image: url('../artwork-rsvp-desktop.webp'); }
-.rsvp-poster .ornament-message { top: 43.9%; height: 21.9%; font-size: 1.92cqw; letter-spacing: .12em; }
-.rsvp-poster .ornament-left { left: 6.96%; }
-.rsvp-poster .ornament-right { left: 45%; }
-.rsvp-event-name {
-  position: absolute;
-  z-index: 1;
-  top: 72.45%;
-  left: 26%;
-  width: 39.8%;
-  transform: translateX(-50%);
-  color: var(--navy);
-  font: 400 3.72cqw/1.08 var(--title-font);
-  text-align: center;
-  letter-spacing: .002em;
-}
-.rsvp-event-name span { display: block; white-space: nowrap; }
-.rsvp-heading {
-  position: absolute;
-  top: 5.48%;
-  left: 73.95%;
-  width: 35%;
-  transform: translateX(-50%);
-  margin: 0;
-  color: var(--red);
-  text-align: center;
-  font: 600 6.38cqw/1.1 var(--body-font);
-  letter-spacing: .008em;
-}
-.rsvp-form { position: absolute; inset: 0; margin: 0; }
-.rsvp-field { position: absolute; left: 57.3%; width: 33.07%; height: 7.0%; }
-.field-name { top: 20.65%; }
-.field-company { top: 32.56%; }
-.field-whatsapp { top: 44.48%; }
-.rsvp-field label {
-  display: block;
-  color: #0c0c0c;
-  font: 600 1.48cqw/1.15 var(--body-font);
-  letter-spacing: .05em;
-  white-space: nowrap;
-}
-.rsvp-field input {
-  display: block;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 52%;
-  padding: 0 .25em .1em 0;
-  border: 0;
-  border-bottom: 1px solid #8c8d85;
-  border-radius: 0;
-  background: transparent;
-  color: var(--navy);
-  font: 400 1.18cqw/1.2 var(--body-font);
-  caret-color: var(--red);
-  outline-offset: 3px;
-  text-overflow: ellipsis;
-}
-.rsvp-field input:focus-visible { outline: 2px solid var(--red); }
-.rsvp-check {
-  position: absolute;
-  left: 57.6%;
-  width: 35%;
-  display: flex;
-  align-items: center;
-  gap: 1.0cqw;
-  color: #080808;
-  cursor: pointer;
-  font: 400 1.13cqw/1.28 var(--body-font);
-}
-.check-attendance { top: 56.1%; min-height: 4.4%; font-weight: 600; }
-.check-consent { top: 64.0%; min-height: 10.0%; }
-.rsvp-check input {
-  appearance: none;
-  -webkit-appearance: none;
-  flex: 0 0 1.9cqw;
-  height: 1.9cqw;
-  min-width: 17px;
-  min-height: 17px;
-  margin: 0;
-  border: 1px solid #8291a5;
-  border-radius: .38cqw;
-  background: white;
-  cursor: pointer;
-}
-.rsvp-check input:checked { background: var(--red); border-color: var(--red); }
-.rsvp-check input:checked::after {
-  content: '';
-  display: block;
-  width: 31%;
-  height: 52%;
-  margin: 17% auto;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-.rsvp-check input:focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; }
-.nontransferable {
-  position: absolute;
-  top: 79.25%;
-  left: 56.4%;
-  width: 35%;
-  margin: 0;
-  color: #0b0b0b;
-  font: 600 1.3cqw/1.35 var(--body-font);
-  letter-spacing: .03em;
-  text-align: center;
-  white-space: nowrap;
-}
-.rsvp-submit {
-  position: absolute;
-  top: 85.5%;
-  left: 64.7%;
-  width: 17.9%;
-  height: 7%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0;
-  border: 0;
-  border-radius: 5px;
-  background: transparent;
-  color: var(--cream);
-  font: 600 2.25cqw/1 var(--body-font);
-  letter-spacing: .07em;
-  cursor: pointer;
-}
-.rsvp-submit:hover { color: #fff; }
-.rsvp-submit:focus-visible { outline: 3px solid var(--navy); outline-offset: 5px; }
-.rsvp-submit:disabled { cursor: progress; opacity: .7; }
-.form-feedback { position: absolute; z-index: 3; top: 94%; left: 56%; width: 35%; margin: 0; padding: 9px 12px; border-radius: 4px; background: var(--red); color: white; font: 600 clamp(13px,1cqw,20px)/1.35 var(--body-font); text-align: center; }
-.form-feedback[hidden] { display: none; }
-@media (max-width: 900px), (orientation: portrait) {
-  .rsvp-poster { background-image: url('../artwork-rsvp-mobile.webp'); }
-  .rsvp-poster .ornament-message { display: none; }
-  .rsvp-event-name { top: 23.4%; left: 50%; width: 87%; font-size: 7.3cqw; line-height: 1.1; }
-  .rsvp-heading { top: 32.6%; left: 50%; width: 85%; font-size: 14.65cqw; letter-spacing: .004em; }
-  .rsvp-field { left: 15.15%; width: 69.75%; height: 4.2%; }
-  .field-name { top: 40.6%; }
-  .field-company { top: 47.1%; }
-  .field-whatsapp { top: 53.62%; }
-  .rsvp-field label { font-size: 3.4cqw; line-height: 1.2; letter-spacing: .04em; }
-  .rsvp-field input { height: 46%; font-size: max(16px,2.65cqw); }
-  .rsvp-check { left: 15.85%; width: 72%; gap: 2.3cqw; font-size: 2.5cqw; line-height: 1.3; }
-  .check-attendance { top: 60.2%; min-height: 2.4%; }
-  .check-consent { top: 64.0%; min-height: 6.0%; }
-  .rsvp-check input { flex-basis: 3.82cqw; height: 3.82cqw; border-radius: .7cqw; }
-  .nontransferable { top: 72.9%; left: 13%; width: 74%; font-size: 2.9cqw; letter-spacing: .015em; }
-  .rsvp-submit { top: 76.1%; left: 30.6%; width: 38.8%; height: 4.25%; font-size: 4.75cqw; letter-spacing: .065em; }
-  .form-feedback { top: 82.2%; left: 14%; width: 72%; font-size: clamp(12px,2cqw,19px); }
-}
-@media (prefers-reduced-motion: reduce) { .rsvp-submit { transition: none; } }
-
-
-/* Thank You page */
-/* Thank-you artwork contains no embedded lettering or QR code.
-   The logo present in the mobile image remains the supplied brand artwork. */
-.thank-you-poster {
-  position: relative;
-  isolation: isolate;
-  container-type: inline-size;
-  width: 100%;
-  min-height: 100svh;
-  aspect-ratio: 1920 / 1080;
-  overflow: hidden;
-  background: var(--navy) url('../artwork-thank-you-desktop.webp') center / 100% 100% no-repeat;
-}
-.thank-you-event-name {
-  position: absolute;
-  top: 8.9%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 63%;
-  margin: 0;
-  color: var(--navy);
-  font: 400 3.40cqw/1.06 var(--title-font);
-  text-align: center;
-  letter-spacing: .004em;
-}
-.thank-you-event-name span,
-.thank-you-message p span { display: block; white-space: nowrap; }
-
-.thank-you-qr-section {
-  position: absolute;
-  top: 27.65%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 35%;
-}
-.thank-you-qr-link {
-  width: 56.08%;
-  aspect-ratio: 1;
-  display: block;
-  background: white;
-  cursor: pointer;
-}
-.thank-you-qr {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  image-rendering: pixelated;
-}
-.thank-you-qr-caption {
-  display: block;
-  margin-top: .32em;
-  color: #080808;
-  font: 600 1.8cqw/1.2 var(--body-font);
-  letter-spacing: -.02em;
-  text-decoration: none;
-  white-space: nowrap;
-}
-.thank-you-qr-caption:hover { text-decoration: underline; }
-.thank-you-qr-caption:focus-visible,
-.thank-you-qr-link:focus-visible { outline: 3px solid var(--red); outline-offset: 4px; }
-
-.thank-you-message {
-  position: absolute;
-  top: 74.05%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 66%;
-  text-align: center;
-  color: #000;
-}
-.thank-you-message h1 {
-  margin: 0;
-  font: 400 4.24cqw/1.08 var(--title-font);
-}
-.thank-you-message p {
-  margin: .2em 0 0;
-  font: 600 1.75cqw/1.18 var(--body-font);
-}
-
-@media (max-width: 900px), (orientation: portrait) {
-  .thank-you-poster {
-    aspect-ratio: 944 / 2048;
-    background-image: url('../artwork-thank-you-mobile.webp');
-  }
-  .thank-you-event-name {
-    top: 23.4%;
-    width: 90%;
-    font-size: 7.08cqw;
-    line-height: 1.1;
-    letter-spacing: .008em;
-  }
-  .thank-you-qr-section {
-    top: 36.65%;
-    width: 78%;
-  }
-  .thank-you-qr-link { width: 51.3%; }
-  .thank-you-qr-caption {
-    margin-top: .36em;
-    font-size: 3.6cqw;
-    letter-spacing: -.02em;
-  }
-  .thank-you-message {
-    top: 64.30%;
-    width: 88%;
-  }
-  .thank-you-message h1 { font-size: 8.72cqw; }
-  .thank-you-message p { margin-top: .34em; font-size: 3.5cqw; line-height: 1.2; }
-}
+@media (prefers-reduced-motion:reduce) { .art-button { transition:none; } }

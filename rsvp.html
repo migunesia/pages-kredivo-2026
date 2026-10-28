@@ -4,49 +4,42 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#162947">
-  <meta name="description" content="RSVP for Kredivo's Once Upon a Time in Shanghai event.">
+  <meta name="description" content="Once Upon a Time in Shanghai — Kredivo Year End Party, 4 December 2026.">
   <title>RSVP — Once Upon a Time in Shanghai | Kredivo</title>
   <link rel="stylesheet" href="./assets/css/styles.css">
   <script src="./assets/js/rsvp.js" defer></script>
 </head>
 <body>
-  <main class="rsvp-poster" aria-labelledby="registration-title">
-    <span class="ornament-message ornament-left" lang="zh-Hans">让我们狂欢吧</span>
-    <span class="ornament-message ornament-right" lang="zh-Hans">让我们狂欢吧</span>
 
-    <div class="rsvp-event-name" aria-label="Once Upon a Time in Shanghai">
-      <span>Once Upon a Time</span>
-      <span>in Shanghai</span>
-    </div>
-    <h1 id="registration-title" class="rsvp-heading">RSVP</h1>
-
-    <form id="rsvp-form" class="rsvp-form" action="./thank-you.html" method="post" autocomplete="on">
-      <div class="rsvp-field field-name">
-        <label for="guest-name">Name</label>
-        <input id="guest-name" name="name" type="text" autocomplete="name" required maxlength="120" placeholder="" spellcheck="false">
-      </div>
-      <div class="rsvp-field field-company">
-        <label for="guest-company">Company</label>
-        <input id="guest-company" name="company" type="text" autocomplete="organization" required maxlength="120" placeholder="">
-      </div>
-      <div class="rsvp-field field-whatsapp">
-        <label for="guest-whatsapp">WhatsApp Number</label>
-        <input id="guest-whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" required maxlength="32" placeholder="" title="Enter a valid WhatsApp number, for example +62 812 3456 7890">
-      </div>
-
-      <label class="rsvp-check check-attendance">
-        <input id="guest-attendance" name="attendance" type="checkbox" required>
-        <span>Yes, I confirm my attendance.</span>
-      </label>
-      <label class="rsvp-check check-consent">
-        <input id="guest-consent" name="consent" type="checkbox" required>
-        <span>I agree to Kredivo, Migunesia, and its third-party providers in collecting, and processing my personal data solely for managing my registration and participation in Kredivo Year End Party.</span>
-      </label>
-
-      <p class="nontransferable">This invitation is non-transferable.</p>
-      <button class="rsvp-submit" type="submit">Submit</button>
-      <p class="form-feedback" id="form-feedback" role="alert" aria-live="polite" hidden></p>
-    </form>
-  </main>
+<main class="poster poster-rsvp" aria-labelledby="registration-title">
+  <picture class="art rsvp-avatar screen-only" >
+    <source media="(max-width: 900px), (orientation: portrait)" srcset="./assets/img/screen/page-3/avatar.png">
+    <img src="./assets/img/screen/page-3/avatar.png" alt="" draggable="false">
+  </picture>
+  <picture class="art rsvp-flag-left screen-only" >
+    <source media="(max-width: 900px), (orientation: portrait)" srcset="./assets/img/screen/page-3/flag.png">
+    <img src="./assets/img/screen/page-3/flag.png" alt="" draggable="false">
+  </picture>
+  <picture class="art rsvp-flag-right screen-only" >
+    <source media="(max-width: 900px), (orientation: portrait)" srcset="./assets/img/screen/page-3/flag.png">
+    <img src="./assets/img/screen/page-3/flag.png" alt="" draggable="false">
+  </picture>
+  <picture class="art rsvp-logo phone-only" >
+    <source media="(max-width: 900px), (orientation: portrait)" srcset="./assets/img/phone/page-3/logo.png">
+    <img src="./assets/img/phone/page-3/logo.png" alt="" draggable="false">
+  </picture>
+  <div class="rsvp-event-name"><span>Once Upon a Time</span><span>in Shanghai</span></div>
+  <h1 id="registration-title" class="rsvp-heading">RSVP</h1>
+  <form id="rsvp-form" class="rsvp-form" action="./thank-you.html" method="post" autocomplete="on">
+    <div class="rsvp-field field-name"><label for="guest-name">Name</label><input id="guest-name" name="name" type="text" autocomplete="name" maxlength="120" required></div>
+    <div class="rsvp-field field-company"><label for="guest-company">Company</label><input id="guest-company" name="company" type="text" autocomplete="organization" maxlength="120" required></div>
+    <div class="rsvp-field field-whatsapp"><label for="guest-whatsapp">WhatsApp Number</label><input id="guest-whatsapp" name="whatsapp" type="tel" autocomplete="tel" inputmode="tel" maxlength="32" required title="e.g. +62 812 3456 7890"></div>
+    <label class="rsvp-check check-attendance"><input id="guest-attendance" name="attendance" type="checkbox" required><span>Yes, I confirm my attendance.</span></label>
+    <label class="rsvp-check check-consent"><input id="guest-consent" name="consent" type="checkbox" required><span>I agree to Kredivo, Migunesia, and its third-party providers in collecting, and processing my personal data solely for managing my registration and participation in Kredivo Year End Party.</span></label>
+    <p class="nontransferable">This invitation is non-transferable.</p>
+    <button class="art-button rsvp-submit" type="submit">Submit</button>
+    <p class="form-feedback" id="form-feedback" role="alert" aria-live="polite" hidden></p>
+  </form>
+</main>
 </body>
 </html>
